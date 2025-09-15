@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeItem, updateQQuantity} from './cartSlice';
+import { removeItem, updateQuantity} from './CartSlice';
 import './CartItem.css';
 
 const CartItem = ({ onContinueShopping}) => {
@@ -36,7 +36,7 @@ const CartItem = ({ onContinueShopping}) => {
             <div>
                 {cart.map((item)=>{
                     <div className="cart-item" key={item.name}>
-                        <img src={item.image} alt={image.name} />
+                        <img src={item.image} alt={item.name} />
                         <div className="cart-item-details">
                             <div className="cart-item-name">{item.name}</div>
                             <div className="cart-item cost">{item.cost}</div>
@@ -45,7 +45,7 @@ const CartItem = ({ onContinueShopping}) => {
                                 <span>{item.quantity}</span>
                                 <button className="cart-item-button cart-item-button-inc" onClick={() => handleIncrement(item)}>+</button>
                             </div>
-                            <div className="cart-item-total">Total: ${calculateTptalCost(item)}</div>
+                            <div className="cart-item-total">Total: ${calculateTotalCost(item)}</div>
                             <button className="cart-item-delete" onClick={handleRemove(item)}>Delete</button>
                         </div>
                     </div>
